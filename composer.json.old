@@ -1,0 +1,26 @@
+{
+  "require": {
+    "93digital/nine3-acf-fields": "dev-master",
+    "93digital/nine3-custom-post-type": "dev-master",
+    "93digital/nine3-theme-settings-panel": "dev-master",
+    "93digital/nine3-load-more": "dev-master",
+    "tgmpa/tgm-plugin-activation": "2.6.1"
+  },
+  "repositories": [{
+      "type": "vcs",
+      "url": "git@93digital.git:wordpress/acf-fields.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@93digital.git:wordpress/custom-post-type.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@93digital.git:wordpress/nine3-theme-settings-panel.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@93digital.git:wordpress/load-more.git"
+    }
+  ]
+}
