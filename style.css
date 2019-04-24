@@ -167,6 +167,18 @@ input[type="hidde"] {
     width: 20em;
 }
 
+.page-id-10172 .register_magazine_wrapper,
+.page-id-10180 .register_magazine_wrapper{
+    display: inline-block;
+    margin: auto;
+    overflow: hidden;
+    clear: both;
+    position: relative;
+    margin-left: 200px;
+    margin-bottom: 20px;
+}
+
+
 /* Digital Subs Pages END */
 
 
