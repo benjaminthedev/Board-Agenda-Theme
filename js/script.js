@@ -44,79 +44,33 @@
     });
   }
 
-// This is for the custom magazine single page :)
-
-$( document ).ready(function() {
-    
 
 
-    //Checking how many time the class appears
-    var numItems = $('ul.singleMagazine li').length;
-
-    if (numItems > 2 ) {
-      console.log("93 Digital Rule....")
-      //An alert for testing.
-      //alert(numItems);
-      
-      //Want to add this class but not to the first two - exclude first two list items and then add it to the rest.
-      //$('ul.singleMagazine li').addClass("newClass");
-
-      //$( " ul.singleMagazine li:nth-child(1), ul.singleMagazine li:nth-child(2)" ).removeClass( "newClass" );
-
-
-      //Better Solution - no need for the code above - remember this starts at 0 just like an array
-      
-      $('ul.singleMagazine li:gt(1)').addClass("newClass");
-
-    }
-
-
-
-
-
-//      $(window).on("resize",function(){  
-//       if($(window).width()>400 && $(window).width()<767){
-      
-//           console.log("we are in responsive mode");
-//           alert("e");
-//           $( "li.mangazine-top-menu:odd" ).addClass( "OddMenuItems" );
-//           $( "li.mangazine-top-menu:even" ).addClass( "EvenMenuItems" );
-//    }    
-// }
-
-
-$(window).resize(function(){
-
-       if ($(window).width() <= 850) {  
-
-             console.log("we are in responsive mode");
-             $( "li.mangazine-top-menu:odd" ).addClass( "OddMenuItems" );
-             $( "li.mangazine-top-menu:even" ).addClass( "EvenMenuItems" );
-             $(".mega-menu-item-execphp-3").addClass("dumb");
-
-       }   
-
-
-
-
-       if ($(window).width() >= 900) {  
-
-             console.log("we are out of responsive mode");
-             $( "li.mangazine-top-menu:odd" ).removeClass( "OddMenuItems" );
-             $( "li.mangazine-top-menu:even" ).removeClass( "EvenMenuItems" );
-             $(".mega-menu-item-execphp-3").removeClass("dumb");
-
-       }     
-
-});
-
-
-
-
-});
-
-
-//End :)
+    let clickMe = document.querySelector(".header-right a");
+    clickMe.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.open('https://boardagenda.com/free-registration/?level_id=0', '_blank');
+        window.open('https://boardagenda.com/digital-subscription/?level_id=7', '_blank');
+    });
+    // This is for the custom magazine single page
+    $(document).ready(function () {
+        var numItems = $('ul.singleMagazine li').length;
+        if (numItems > 2) {
+            $('ul.singleMagazine li:gt(1)').addClass("newClass");
+        }
+        $(window).resize(function () {
+            if ($(window).width() <= 850) {
+                $("li.mangazine-top-menu:odd").addClass("OddMenuItems");
+                $("li.mangazine-top-menu:even").addClass("EvenMenuItems");
+                $(".mega-menu-item-execphp-3").addClass("dumb");
+            }
+            if ($(window).width() >= 900) {
+                $("li.mangazine-top-menu:odd").removeClass("OddMenuItems");
+                $("li.mangazine-top-menu:even").removeClass("EvenMenuItems");
+                $(".mega-menu-item-execphp-3").removeClass("dumb");
+            }
+        });
+    });
 
 
   $(document).ready( getAdverts );

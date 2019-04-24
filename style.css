@@ -13,12 +13,15 @@ Template: genesis
 
 /* New Subs Pages  */
 
-
 /* General Styles */
+h2.subscription-options-title {
+    display: none;
+}
 
 .page-id-10163 h1.entry-title,
 .page-id-10162 h1.entry-title,
-.page-id-10172 h1.entry-title{
+.page-id-10172 h1.entry-title,
+.page-id-10180 h1.entry-title{
     background: black;
     text-align: center!important;
     padding: 20px 10px;
@@ -42,6 +45,11 @@ Template: genesis
     padding-right: 5px;
 }
 
+.new-sub-box .leaky-paywall-user-fields,
+.new-sub-box .leaky-paywall-account-fields {
+    width: 94%;
+}
+
 .leaky-paywall-payment-button a {
     background-color: #C95433 !important; 
     border: none !important;
@@ -57,6 +65,32 @@ Template: genesis
 .leaky_paywall_subscription_limit_details {
     display: none !important;
 }
+
+/*Free Reg Sign Up Page*/
+.page-id-10180 div#option-1,
+.page-id-10180 div#option-2,
+.page-id-10180 div#option-5,
+.page-id-10180 div#option-6,
+.page-id-10180 div#option-7{    
+    display: none;
+}
+.page-id-10180 .leaky-paywall-trials-message {
+    display: none;
+}
+.page-id-10180 input.lp-coupon-input {
+    width: 90%;
+}
+ .leaky_paywall_subscription_option {
+    width: 45em;
+}
+
+.page-id-10180 h3.leaky-paywall-subscription-details-title,
+.page-id-10180 ul.leaky-paywall-subscription-details{
+    display: none;
+}
+
+}
+/*Free Reg Sign Up Page END*/
 
 
 
@@ -109,6 +143,10 @@ input[type="hidde"] {
     display: none;
 }
 
+.page-id-10162 .leaky-paywall-trials-message {
+    display: none;
+}
+
 /*Year Sub Start END*/
 
 /* Digital Subs Pages */
@@ -128,6 +166,18 @@ input[type="hidde"] {
 .page-id-10172 .leaky_paywall_subscription_option{
     width: 20em;
 }
+
+.page-id-10172 .register_magazine_wrapper,
+.page-id-10180 .register_magazine_wrapper{
+    display: inline-block;
+    margin: auto;
+    overflow: hidden;
+    clear: both;
+    position: relative;
+    margin-left: 200px;
+    margin-bottom: 20px;
+}
+
 
 /* Digital Subs Pages END */
 

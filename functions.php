@@ -79,7 +79,7 @@ function board_agenda_header_wrap() { ?>
 		<div class="wrap">
 			<div class="floatleft toplinks">
 				<p class="today-date"><?php echo date("j F, Y")?></p>
-				<a href="<?php echo esc_url( home_url() ); ?>/register-subscribe" class="toplink-sub">Subscribe</a>
+				<a href="<?php echo esc_url( home_url() ); ?>/digital-subscription/?level_id=7" class="toplink-sub">Subscribe</a>
 				<a href="<?php echo esc_url( home_url() ); ?>/advertise" class="toplink-add">Advertise</a>
 				<a href="<?php echo esc_url( home_url() ); ?>/about" class="toplink-abo">About Us</a>
 			</div>
@@ -99,7 +99,7 @@ function board_agenda_header_wrap() { ?>
 						$base_url = home_url();
 						
 						if ( ! is_user_logged_in() ) {
-							$base_url 	.= '/register-subscribe/';
+							$base_url 	.= '/digital-subscription/?level_id=7';
 							$text 		= 'Register';
 						} else {
 
@@ -169,7 +169,7 @@ function styzer_header_right_content () {
 
 	?>
     <div class="header-right">
-			<a href="<?php echo home_url('/register-subscribe'); ?>">
+			<a href="<?php echo home_url('/digital-subscription/?level_id=7'); ?>">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/backgound.png" class="tablets">
 				<img src="<?php echo $magazine_image['url']; ?>" class="magazine_image">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/forground.png" class="subs_circle">
