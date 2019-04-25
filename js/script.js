@@ -50,7 +50,7 @@
     clickMe.addEventListener("click", (e) => {
         e.preventDefault();
         window.open('https://boardagenda.com/free-registration/?level_id=0', '_blank');
-        window.open('https://boardagenda.com/digital-subscription/?level_id=7', '_blank');
+        location.href = "https://boardagenda.com/digital-subscription/?level_id=7";
     });
     // This is for the custom magazine single page
     $(document).ready(function () {
@@ -70,6 +70,14 @@
                 $(".mega-menu-item-execphp-3").removeClass("dumb");
             }
         });
+        //New Steps On Sign Up
+        //console.log('Before New Forms');
+        // $('.page-id-10180 p.form-row.email-address').append(' <a href="#" class="newRead">read more...</a>');
+        // $('readNew').click(function(e) {
+        //     e.preventDefault();
+	    //     console.log('clicking chicken');
+        // });
+
     });
 
 

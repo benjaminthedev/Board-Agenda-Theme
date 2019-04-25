@@ -8,7 +8,8 @@ function board_agenda_register_user( $confirmation, $form, $entry, $ajax ) {
 	$mailTemplate = 'Free';
 	$email = $_POST['input_3'];
 	$password = '';
-	$is_register = $form['id'] === 12; // Register free form
+	//$is_register = $form['id'] === 12; // Register free form
+	$is_register = $form['id'] === 17; // Register free form
 
 	if( ! is_user_logged_in() ) {
 		$username = sanitize_title( $email );
@@ -42,7 +43,7 @@ function board_agenda_register_user( $confirmation, $form, $entry, $ajax ) {
 
 	/**
 	 * Extra gravity form fields
-	 */
+	 
 	$values = array(
 		'phone_prefix' => $is_register ? $_POST['input_18'] : $_POST['input_27'],
 		'phone' => $is_register ? $_POST['input_11'] : $_POST['input_15'],
@@ -57,6 +58,9 @@ function board_agenda_register_user( $confirmation, $form, $entry, $ajax ) {
 		update_user_meta( $user_id, $key, $value );
 	}
 	update_user_meta( $user_id, '_gravity_fields', $_POST );
+*/
+
+
 
 	/**
 	 * For the registration page I used gravity form + some bespoke
@@ -255,10 +259,12 @@ function board_agenda_next_username( $latest = null ) {
 }
 
 //Check if the mail address already exists
-add_filter( 'gform_validation_12', 'board_agenda_check_email' );
+// add_filter( 'gform_validation_12', 'board_agenda_check_email' );
+add_filter( 'gform_validation_17', 'board_agenda_check_email' );
 add_filter( 'gform_validation_5', 'board_agenda_check_email' );
 
-add_filter( 'gform_confirmation_12', 'board_agenda_register_user', 10, 4 );
+// add_filter( 'gform_confirmation_12', 'board_agenda_register_user', 10, 4 );
+add_filter( 'gform_confirmation_17', 'board_agenda_register_user', 10, 4 );
 add_filter( 'gform_confirmation_5', 'board_agenda_register_user', 10, 4 );
 
 /*
