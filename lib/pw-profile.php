@@ -214,7 +214,8 @@ function board_agenda_leaky_paywall_profile( $atts ) {
 				$results .= '<a href="#" class="button button-upgrade" onclick="document.querySelector(\'#option-' . intval($_GET['subscribe']) . ' form\').submit()">Udgrade</a>';
 			} else {
         // $results .= '<a href="' . esc_url( home_url( '/register-subscribe/#subscribe' ) ) . '" class="button button-upgrade" target="_blank">Upgrade</a>';
-        $results .= '<a href="' . esc_url( home_url( '/digital-subscription/?level_id=7' ) ) . '" class="button button-upgrade" target="_blank">Upgrade</a>';
+        //$results .= '<a href="' . esc_url( home_url( '/digital-subscription/?level_id=7' ) ) . '" class="button button-upgrade" target="_blank">Upgrade</a>';
+        $results .= '<a href="' . esc_url( home_url( '/subscriptions/' ) ) . '" class="button button-upgrade" target="_blank">Upgrade</a>';
         
         
 			}
