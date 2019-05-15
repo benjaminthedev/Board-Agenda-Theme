@@ -115,6 +115,13 @@ h2.subscription-options-title {
 /*-- All Subscriptions Page --*/
 
 
+/* Corp Page */
+.page-id-10437 div#option-0,
+.page-id-10437 div#option-1,
+.page-id-10437 div#option-2 {
+    display: none !important;
+}
+/* Corp Page End */
 
 
 

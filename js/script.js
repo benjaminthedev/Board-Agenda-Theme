@@ -81,10 +81,17 @@
     });
 
 
+
+
   $(document).ready( getAdverts );
 })(jQuery);
 
 jQuery(document).ready(function($) {
+
+    $('.page-id-10437 div#option-0, .page-id-10437 div#option-1, .page-id-10437 div#option-2, .page-id-10437 div#option-5, .page-id-10437 div#option-7').hide();
+
+
+
     // Show the login dialog box on click
     //Login popup
     $( '.log-me-in' ).click( function() {
