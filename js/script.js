@@ -47,11 +47,11 @@
 
 
     let clickMe = document.querySelector(".header-right a");
-    clickMe.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.open('https://boardagenda.com/free-registration/?level_id=0', '_blank');
-        location.href = "https://boardagenda.com/digital-subscription/?level_id=7";
-    });
+    // clickMe.addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     window.open('https://boardagenda.com/free-registration/?level_id=0', '_blank');
+    //     location.href = "https://boardagenda.com/digital-subscription/?level_id=7";
+    // });
     // This is for the custom magazine single page
     $(document).ready(function () {
         var numItems = $('ul.singleMagazine li').length;

@@ -39,7 +39,8 @@ h2.subscription-options-title {
 .page-id-10163 h1.entry-title,
 .page-id-10162 h1.entry-title,
 .page-id-10172 h1.entry-title,
-.page-id-10180 h1.entry-title{
+.page-id-10180 h1.entry-title,
+.page-id-10690 h1.entry-title{
     background: black;
     text-align: center!important;
     padding: 20px 10px;
@@ -99,7 +100,7 @@ h2.subscription-options-title {
     width: 90%;
 }
  .leaky_paywall_subscription_option {
-    width: 45em;
+    width: 45em !important;
 }
 
 .page-id-10180 h3.leaky-paywall-subscription-details-title,
@@ -111,11 +112,21 @@ h2.subscription-options-title {
 /*Free Reg Sign Up Page END*/
 
 
+/*-- All Subscriptions Page --*/
+
+
+
+
 
 
 /* Trial Subs Start */
-.page-id-10163 .leaky_paywall_subscription_option {
-    width: 45em;
+.page-id-10163 .leaky_paywall_subscription_option,
+.leaky_paywall_subscription_option {
+    width: 40em !important;
+}
+
+.leaky_paywall_subscription_allowed_content{
+    display:none;
 }
 
 .page-id-10163 h1.entry-title {
@@ -186,7 +197,9 @@ input[type="hidde"] {
 }
 
 .page-id-10172 .register_magazine_wrapper,
-.page-id-10180 .register_magazine_wrapper{
+.page-id-10180 .register_magazine_wrapper,
+.page-id-10690 .register_magazine_wrapper
+{
     display: inline-block;
     margin: auto;
     overflow: hidden;
