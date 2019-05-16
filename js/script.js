@@ -86,7 +86,17 @@
   $(document).ready( getAdverts );
 })(jQuery);
 
+
+//Remove recurring word
+
+
+
+
 jQuery(document).ready(function($) {
+    //Remove recurring word
+    $( ".leaky_paywall_subscription_price:contains('(recurring)')" ).css( "display", "none" );
+
+    //$( ".leaky_paywall_subscription_price:contains('(recurring)')" ).hide();
 
     $('.page-id-10437 div#option-0, .page-id-10437 div#option-1, .page-id-10437 div#option-2, .page-id-10437 div#option-5, .page-id-10437 div#option-7').hide();
 
