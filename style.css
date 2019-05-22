@@ -105,7 +105,7 @@ h2.subscription-options-title {
 
 .page-id-10180 h3.leaky-paywall-subscription-details-title,
 .page-id-10180 ul.leaky-paywall-subscription-details{
-    display: none;
+    display: none !important;
 }
 
 }
@@ -113,6 +113,13 @@ h2.subscription-options-title {
 
 
 /*-- All Subscriptions Page --*/
+
+/* -- Removing the pointless info -- */
+
+h3.leaky-paywall-subscription-details-title,
+ul.leaky-paywall-subscription-details{
+    display:none !important;
+}
 
 
 /* Corp Page */
@@ -195,9 +202,11 @@ input[type="hidde"] {
 .page-id-10172 div#option-0,
 .page-id-10172 div#option-1,
 .page-id-10172 div#option-2,
-.page-id-10172 div#option-5{
+.page-id-10172 div#option-5,
+.page-id-10172 div#option-6{
     display: none;
 }
+
 
 .page-id-10172 .leaky_paywall_subscription_option{
     width: 20em;
