@@ -93,14 +93,11 @@
 
 
 jQuery(document).ready(function($) {
-    //Remove recurring word
+    //Remove recurring word from the sub boxes at bottom of the page.
     $( ".leaky_paywall_subscription_price:contains('(recurring)')" ).css( "display", "none" );
-
-    //$( ".leaky_paywall_subscription_price:contains('(recurring)')" ).hide();
-
+    $('h3.leaky-paywall-subscription-details-title, ul.leaky-paywall-subscription-details').hide(); 
+    //CSS not working so using jQuery but will test, fix and remove to CSS rather than jQuery
     $('.page-id-10437 div#option-0, .page-id-10437 div#option-1, .page-id-10437 div#option-2, .page-id-10437 div#option-5, .page-id-10437 div#option-7').hide();
-
-
 
     // Show the login dialog box on click
     //Login popup
