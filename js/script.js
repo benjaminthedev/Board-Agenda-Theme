@@ -86,13 +86,17 @@
   $(document).ready( getAdverts );
 })(jQuery);
 
-
-//Remove recurring word
-
-
-
-
 jQuery(document).ready(function($) {
+    //LPW Accounts
+    $('.leaky-paywall-account-fields p.username label').html("Username - please use your email address here *");
+    $('.leaky-paywall-account-fields p.password label').html("Choose Your Password *");
+    $('.leaky-paywall-account-fields p.confirm-password label').html("Confirm Your Password *");
+
+
+    
+
+
+
     //Remove recurring word from the sub boxes at bottom of the page.
     $( ".leaky_paywall_subscription_price:contains('(recurring)')" ).css( "display", "none" );
     $('h3.leaky-paywall-subscription-details-title, ul.leaky-paywall-subscription-details').hide();
