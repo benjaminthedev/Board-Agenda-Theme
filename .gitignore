@@ -1,1 +1,4 @@
 package-lock.json
+/.sass-cache/
+/.vscode/
+_network.old.php

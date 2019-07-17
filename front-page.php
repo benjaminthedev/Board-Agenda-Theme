@@ -139,6 +139,17 @@ function board_agenda_front_content(){
 	    </script>
 
 	    <!-- Home Page Slider Begin -->
+
+			
+		
+			<?php echo do_shortcode('[recent_post_slider design="design-1"]'); ?>
+
+			<style>
+				#slider1_container{
+					display:none;
+				}
+			</style>
+
 	    <!-- To move inline styles to css file/block, please specify a class name for each element. -->
 	    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 800px; height: 330px; background: #fff; overflow: hidden; ">
 
