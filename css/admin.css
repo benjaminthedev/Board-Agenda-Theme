@@ -157,9 +157,9 @@
  * Password reset doesn't work from the user-edit page.
  * So we hiding the field, for now.
  */
-.user-pass1-wrap {
+/* .user-pass1-wrap {
 	display: none !important;
-}
+} */
 
 
 /* select2 css */

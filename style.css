@@ -6932,6 +6932,20 @@ input[type="hidde"] {
 
 
 
+/* -- New Video Section */
+
+
+.category-video img.singleauthor-img.clearfix,
+.category-video p.post-author.sponsor-h2,
+.category-video .single-post-subheading.clearfix,
+.category-video button.post-category,
+.category-video .related-posts{
+    display: none !important;
+}
+
+
+/* -- New Video Section End  */
+
 
 
 
