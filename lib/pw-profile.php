@@ -128,6 +128,11 @@ function board_agenda_leaky_paywall_profile( $atts ) {
     $results .= '<input type="email" class="issuem-leaky-paywall-field-input" id="leaky-paywall-email" name="email" value="' . $user->user_email . '" required>';
     $results .= '</p>';
 
+    $results .= '<p>';
+    $results .= '<label class="issuem-leaky-paywall-field-label" for="leaky-paywall-address">' . __( 'Addressxxx', 'leaky-paywall' ) . '</label>';
+    $results .= '<input type="textbox" class="issuem-leaky-paywall-field-input" id="leaky-paywall-address" name="address" value="' . $user_address . '" required>';
+    $results .= '</p>';
+
     //Get the gravity form details
 		$data = array();
 		$keys = array(
@@ -216,8 +221,8 @@ function board_agenda_leaky_paywall_profile( $atts ) {
         // $results .= '<a href="' . esc_url( home_url( '/register-subscribe/#subscribe' ) ) . '" class="button button-upgrade" target="_blank">Upgrade</a>';
         //$results .= '<a href="' . esc_url( home_url( '/digital-subscription/?level_id=7' ) ) . '" class="button button-upgrade" target="_blank">Upgrade</a>';
         $results .= '<a href="' . esc_url( home_url( '/subscriptions/' ) ) . '" class="button button-upgrade" target="_blank">Upgrade</a>';
-        
-        
+
+
 			}
 
       $results .= '</div>';
@@ -267,7 +272,7 @@ function board_agenda_delete_confirm() {
       </form>
     </div>
   </div>
-<?php 
+<?php
 }
 
 function board_agenda_delete_done() { ?>
@@ -305,6 +310,7 @@ if ( ! empty( $_POST['leaky-paywall-profile-nonce'] ) ) {
         'user_login'   => $user->user_login,
         'display_name' => $user->display_name,
         'user_email'   => $user->user_email,
+        'address' => $post_data->address,
       );
 
       if ( !empty( $_POST['firstname'] ) ) {

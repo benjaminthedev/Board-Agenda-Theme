@@ -10,6 +10,291 @@ define( 'CHILD_THEME_VERSION', '2.1.8' );
 
 add_filter('wpseo_enable_xml_sitemap_transient_caching', '__return_false');
 
+
+//Removes stupid dashboard health crap from WP
+add_action('wp_dashboard_setup', 'remove_site_health_dashboard_widget');
+function remove_site_health_dashboard_widget()
+{
+    remove_meta_box('dashboard_site_health', 'dashboard', 'normal');
+}
+
+
+// leaky_paywall here
+// add fields to registration form
+
+add_action( 'leaky_paywall_after_password_registration_field', 'zeen101_custom_registration_fields' );
+function zeen101_custom_registration_fields() {
+  ?>
+  	<div class="form-row">
+		<label>Company*</label>
+  		<input type="text" value="" placeholder="Company Name" name="company" required>
+	</div>
+
+ 	<div class="form-row">
+    <label>Role*</label>
+  		<input type="text" value="" name="role" placeholder="Role" required>
+	</div>
+
+  <div class="form-row">
+    <label>Phone Number*</label>
+      <input type="tel" value="" name="phonenumber" placeholder="Phone Number" required>
+  </div>
+
+<div class="billing">
+  <div class="form-row">
+    <label>Billing Address*</label>
+      <input type="textbox" value="" name="address01" placeholder="Billing Address" >
+  </div>
+
+
+  <div class="form-row">
+    <label>Billing Address </label>
+      <input type="textbox" value="" name="address02" placeholder="Billing Address - line 2" >
+  </div>
+
+    <div class="form-row">
+    <label>Post Code</label>
+      <input type="textbox" value="" name="postcodeaddress" placeholder="Post Code">
+  </div>
+
+</div>
+	
+	<div class="checkBoxSection">
+		<label>
+			<input type="checkbox" name="colorCheckbox" value="red"> Post to a different address?
+		</label>
+	</div>
+
+	<div class="red box">
+
+		<h3>Postal Address Information</h3>
+
+	  	<div class="form-row">
+    		<label>Postal Address</label>
+    	  	<input type="textbox" value="" name="postal01" placeholder="Postal Address">
+  		</div>
+
+	  	<div class="form-row">
+    		<label>Postal Address</label>
+    	  	<input type="textbox" value="" name="postal02" placeholder="Billing Address - line 2">
+  		</div>
+
+		<div class="form-row">
+			<label>Post Code</label>
+			<input type="textbox" value="" name="postcodepostal" placeholder="Post Code">
+		</div>		  
+			
+	</div>
+
+	<style>
+
+	.form-row {
+		width: 98%;
+	}
+	.checkBoxSection{
+		margin-top:20px;
+	}
+    .box{   
+        display: none;
+        margin-top: 20px;
+    }
+
+	.show-Me{
+		display: none;
+	}
+	</style>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('input[type="checkbox"]').click(function(){
+				var inputValue = $(this).attr("value");
+				$("." + inputValue).toggle();
+				
+				console.log('CheckBox Checked');
+
+				$('billing').toggleClass('show-Me');
+			});
+		});
+		</script>
+
+  <?php
+
+}
+
+// save fields if user is created
+add_action( 'leaky_paywall_form_processing', 'zeen101_custom_registration_fields_save', 10, 6 );
+function zeen101_custom_registration_fields_save( $post_data, $user_id, $price, $mode, $site, $level_id ) {
+
+  if ( $post_data['company'] ) {
+    update_user_meta( $user_id, '_company', sanitize_text_field( $post_data['company'] ) );
+  }
+
+  if ( $post_data['role'] ) {
+    update_user_meta( $user_id, '_role', sanitize_text_field( $post_data['role'] ) );
+  }
+
+  if ( $post_data['phonenumber'] ) {
+    update_user_meta( $user_id, '_phonenumber', sanitize_text_field( $post_data['phonenumber'] ) );
+  }
+
+  if ( $post_data['address01'] ) {
+    update_user_meta( $user_id, '_address01', sanitize_text_field( $post_data['address01'] ) );
+  }
+
+  if ( $post_data['address02'] ) {
+    update_user_meta( $user_id, '_address02', sanitize_text_field( $post_data['address02'] ) );
+  }
+
+  if ( $post_data['postcodeaddress'] ) {
+    update_user_meta( $user_id, '_postcodeaddress', sanitize_text_field( $post_data['postcodeaddress'] ) );
+  }
+
+  if ( $post_data['postal01'] ) {
+    update_user_meta( $user_id, '_postal01', sanitize_text_field( $post_data['postal01'] ) );
+  }
+  
+  if ( $post_data['postal02'] ) {
+    update_user_meta( $user_id, '_postal02', sanitize_text_field( $post_data['postal02'] ) );
+  }
+  
+  if ( $post_data['postcodepostal'] ) {
+    update_user_meta( $user_id, '_postcodepostal', sanitize_text_field( $post_data['postcodepostal'] ) );
+  }  
+
+
+  
+
+
+
+}
+
+// display the field in the user's WP admin profile
+add_action( 'show_user_profile', 'zeen101_admin_custom_fields', 99 );
+add_action( 'edit_user_profile', 'zeen101_admin_custom_fields', 99 );
+
+function zeen101_admin_custom_fields( $user ) {
+
+   $company = get_user_meta( $user->ID, '_company', true );
+   $role = get_user_meta( $user->ID, '_role', true );
+   $phonenumber = get_user_meta( $user->ID, '_phonenumber', true );
+   
+   $address01 = get_user_meta( $user->ID, '_address01', true );
+   $address02 = get_user_meta( $user->ID, '_address02', true );
+   $postcodeaddress = get_user_meta( $user->ID, '_postcodeaddress', true );
+
+
+   $postal01 = get_user_meta( $user->ID, '_postal01', true );
+   $postal02 = get_user_meta( $user->ID, '_postal02', true );
+   $postcodepostal = get_user_meta( $user->ID, '_postcodepostal', true );
+	?>
+	<div class="leaky-paywall-account-fields">
+  <table class="form-table">
+
+	 <tr>
+		<th><label>Company</label></th>
+		<td>
+			<?php echo $company; ?>
+		</td>
+	</tr>
+
+	<tr>
+		<th><label>Role</label></th>
+		<td>
+			<?php echo $role; ?>
+		</td>
+	</tr>
+
+  <tr>
+		<th><label>Phone Number</label></th>
+		<td>
+			<?php echo $phonenumber; ?>
+		</td>
+	</tr>
+
+  <tr>
+    <th><label>Address</label></th>
+    <td>
+      <?php echo $address01; ?>
+    <br />
+      <?php echo $address02; ?>
+    <br />
+      <?php echo $address02; ?>
+    </td>
+  </tr>
+
+    <tr>
+    <th><label>Billing Address</label></th>
+    <td>
+      <?php echo $postal01; ?>
+    <br />
+      <?php echo $postal02; ?>
+    <br />
+      <?php echo $postcodepostal; ?>
+    </td>
+  </tr>
+
+  </table>
+</div>
+<?php
+}
+
+// add custom field data to Leaky Paywall Reporting Tool export
+add_filter( 'leaky_paywall_reporting_tool_meta', 'zeen101_reporting_tool_custom_fields_headers' );
+
+function zeen101_reporting_tool_custom_fields_headers( $meta ) {
+  $meta[] = 'company';
+  $meta[] = 'role';
+  $meta[] = 'phonenumber';
+  $meta[] = 'address01';
+  $meta[] = 'address02';
+  $meta[] = 'postcodeaddress';
+  $meta[] = 'postal01';
+  $meta[] = 'postal02';
+  $meta[] = 'postcodepostal';
+
+  //$meta[] = 'newsletter_signup';
+	return $meta;
+}
+
+add_filter( 'leaky_paywall_reporting_tool_user_meta', 'zeen101_reporting_tool_custom_fields_values', 10, 2 );
+
+function zeen101_reporting_tool_custom_fields_values( $user_meta, $user_id ) {
+  $company = get_user_meta( $user_id, '_company', true );
+  $role = get_user_meta( $user_id, '_role', true );
+  $phonenumber = get_user_meta( $user_id, '_phonenumber', true );
+  $address01 = get_user_meta( $user_id, '_address01', true );
+  $address02 = get_user_meta( $user_id, '_address02', true );
+  $postcodeaddress = get_user_meta( $user_id, '_postcodeaddress', true );
+
+
+  	$postal01 = get_user_meta( $user_id, '_postal01', true );
+	$postal02 = get_user_meta( $user_id, '_postal02', true );   	
+	$postcodeaddress = get_user_meta( $user_id, '_postcodepostal', true );
+	//$newsletter = get_user_meta( $user_id, '_newsletter_subscribe', true );
+
+
+  $user_meta[$user_id]['company'] = $company;
+  $user_meta[$user_id]['role'] = $role;
+  $user_meta[$user_id]['phonenumber'] = $phonenumber;
+  $user_meta[$user_id]['address01'] = $address01;
+  $user_meta[$user_id]['address02'] = $address02;
+  $user_meta[$user_id]['postcodeaddress'] = $postcodeaddress;
+
+
+  $user_meta[$user_id]['postal01'] = $postal01;
+  $user_meta[$user_id]['postal02'] = $postal02;
+  $user_meta[$user_id]['postcodepostal'] = $postcodepostal;
+	//$user_meta[$user_id]['newsletter_signup'] = $newsletter;
+	return $user_meta;
+}
+
+
+// end leaky_paywall here
+
+
+
+
 //* Enqueue Google Fonts
 add_action( 'wp_enqueue_scripts', 'boardagenda_enqueue_scripts' );
 function boardagenda_enqueue_scripts() {
@@ -84,20 +369,20 @@ function board_agenda_header_wrap() { ?>
 				<a href="<?php echo esc_url( home_url() ); ?>/about" class="toplink-abo">About Us</a>
 			</div>
 			<div class="floatright">
-				
+
 
 				<ul>
 				<?php if( ba_is_client_user() ) : $profile = ba_get_my_profile(); ?>
-					
+
 					<li><a href="https://boardagenda.com/my-account/"><i class="fa fa-plus-circle icon-color"></i>Edit company profile</a></li>
-					
+
 					<!-- <li><a href="<?php //echo esc_url( ba_get_my_profile_edit_link() ) ?>"><i class="fa fa-plus-circle icon-color"></i>Edit company profile</a></li> -->
 				<?php endif; ?>
 					<li>
 												<?php
 						// register - profile link
 						$base_url = home_url();
-						
+
 						if ( ! is_user_logged_in() ) {
 							$base_url 	.= '/subscriptions/';
 							$text 		= 'Register';
@@ -106,7 +391,7 @@ function board_agenda_header_wrap() { ?>
 							if ( ba_is_resource_partner() || ba_is_client_user() ) {
 								$base_url = '';
 							} else {
-								$base_url 	= '/profile/';
+								$base_url 	= '/my-account/';
 								$text 		= 'My Account';
 							}
 						}
@@ -2373,7 +2658,7 @@ function ba_restore_partner_slug( $partner ) {
 }
 
 
-//Thought it would be fitting to add images to the RSS here - happy birthday ;) not that anyone gives a crap.
+//Thought it would be fitting to add images to the RSS here - happy birthday ;) not that anyone gives a crap. <= Oh wow I actually put that...... -- LOLOLOL I really did put this! oh jesus I am going to be 37 soon and still feel so damn low. Fuck my life.
 
 function featuredtoRSS($content) {
 global $post;
@@ -2382,6 +2667,15 @@ global $post;
 	}
 	return $content;
 }
-	 
+
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
+
+
+//blah
+// function remove_core_updates(){
+// global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
+// }
+// add_filter('pre_site_transient_update_core','remove_core_updates');
+// add_filter('pre_site_transient_update_plugins','remove_core_updates');
+// add_filter('pre_site_transient_update_themes','remove_core_updates');
