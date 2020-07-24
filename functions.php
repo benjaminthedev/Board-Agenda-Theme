@@ -161,12 +161,6 @@ function zeen101_custom_registration_fields_save( $post_data, $user_id, $price, 
   if ( $post_data['postcodepostal'] ) {
     update_user_meta( $user_id, '_postcodepostal', sanitize_text_field( $post_data['postcodepostal'] ) );
   }  
-
-
-  
-
-
-
 }
 
 // display the field in the user's WP admin profile
@@ -192,7 +186,7 @@ function zeen101_admin_custom_fields( $user ) {
   <table class="form-table">
 
 	 <tr>
-		<th><label>Company</label></th>
+		<th><label>Company - HELLOE</label></th>
 		<td>
 			<?php echo $company; ?>
 		</td>
