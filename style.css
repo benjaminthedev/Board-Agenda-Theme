@@ -6727,7 +6727,8 @@ h2.subscription-options-title {
 .page-id-10172 h1.entry-title,
 .page-id-10180 h1.entry-title,
 .page-id-10690 h1.entry-title,
-.page-id-10797 h1.entry-title{
+.page-id-10797 h1.entry-title,
+.page-id-9813 h1.entry-title{
     background: black;
     text-align: center!important;
     padding: 20px 10px;
@@ -6916,8 +6917,8 @@ input[type="hidde"] {
 .page-id-10172 .register_magazine_wrapper,
 .page-id-10180 .register_magazine_wrapper,
 .page-id-10690 .register_magazine_wrapper,
-.page-id-10797 .register_magazine_wrapper
-{
+.page-id-10797 .register_magazine_wrapper,
+.page-id-9813 .register_magazine_wrapper{
     display: inline-block;
     margin: auto;
     overflow: hidden;
@@ -6925,6 +6926,28 @@ input[type="hidde"] {
     position: relative;
     margin-left: 200px;
     margin-bottom: 20px;
+}
+
+
+/* New Free Registration Page Using Only LPW and Not Gravity Forms */
+
+.page-id-9813 .leaky-paywall-subscription-total,
+.page-id-9813 .leaky-paywall-trials-message,
+.page-id-9813 .checkBoxSection{
+    display: none;
+}
+
+.page-id-9813 .new-sub-box .leaky-paywall-user-fields, 
+.page-id-9813 .new-sub-box .leaky-paywall-account-fields{
+    width: 100%;
+}
+
+.page-id-9813 .form-row {
+    margin-bottom: 20px;
+}
+
+.page-id-9813 .leaky-paywall-checkout-button {
+    margin-top: 30px;
 }
 
 
@@ -6942,6 +6965,7 @@ input[type="hidde"] {
 .category-video .related-posts{
     display: none !important;
 }
+
 
 
 /* -- New Video Section End  */
