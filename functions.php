@@ -13,8 +13,7 @@ add_filter('wpseo_enable_xml_sitemap_transient_caching', '__return_false');
 
 //Removes stupid dashboard health crap from WP
 add_action('wp_dashboard_setup', 'remove_site_health_dashboard_widget');
-function remove_site_health_dashboard_widget()
-{
+function remove_site_health_dashboard_widget(){
     remove_meta_box('dashboard_site_health', 'dashboard', 'normal');
 }
 
@@ -25,19 +24,19 @@ function remove_site_health_dashboard_widget()
 add_action( 'leaky_paywall_after_password_registration_field', 'zeen101_custom_registration_fields' );
 function zeen101_custom_registration_fields() {
   ?>
-  	<div class="form-row">
+  	<div class="form-row company">
 		<label>Company*</label>
-  		<input type="text" value="" placeholder="Company Name" name="company" required>
+  		<input type="text" value="" placeholder="Company Name" name="company" >
 	</div>
 
- 	<div class="form-row">
+ 	<div class="form-row role">
     <label>Role*</label>
-  		<input type="text" value="" name="role" placeholder="Role" required>
+  		<input type="text" value="" name="role" placeholder="Role" >
 	</div>
 
-  <div class="form-row">
+  <div class="form-row phone">
     <label>Phone Number*</label>
-      <input type="tel" value="" name="phonenumber" placeholder="Phone Number" required>
+      <input type="tel" value="" name="phonenumber" placeholder="Phone Number" >
   </div>
 
 <div class="billing">
@@ -47,19 +46,19 @@ function zeen101_custom_registration_fields() {
   </div>
 
 
-  <div class="form-row">
+  <div class="form-row billingAddress">
     <label>Billing Address </label>
       <input type="textbox" value="" name="address02" placeholder="Billing Address - line 2" >
   </div>
 
-    <div class="form-row">
+    <div class="form-row postCode">
     <label>Post Code</label>
       <input type="textbox" value="" name="postcodeaddress" placeholder="Post Code">
   </div>
 
 </div>
 	
-	<div class="checkBoxSection">
+	<div class="checkBoxSection checkBoxAddress">
 		<label>
 			<input type="checkbox" name="colorCheckbox" value="red"> Post to a different address?
 		</label>
@@ -400,7 +399,7 @@ function board_agenda_header_wrap() { ?>
 						$base_url = home_url();
 
 						if ( ! is_user_logged_in() ) {
-							$base_url 	.= '/subscriptions/';
+							$base_url 	.= '/register/?level_id=0';
 							$text 		= 'Register';
 						} else {
 
