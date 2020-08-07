@@ -6950,6 +6950,15 @@ input[type="hidde"] {
     margin-top: 30px;
 }
 
+/* -- Hiding All fields that do not need to be shown on free account sign up! -- */
+
+.page-id-9813  .form-row.company,
+.page-id-9813 .form-row.role,
+.page-id-9813 .form-row.phone,
+.page-id-9813 .billing {
+    display: none;
+}
+
 
 /* Digital Subs Pages END */
 
