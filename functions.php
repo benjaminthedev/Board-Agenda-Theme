@@ -833,7 +833,6 @@ function sp_next_page_link ( $text ) {
 
                                         //SINGLE POST RELATED POST
 
-
 //*******************************************************************************************************
 
 add_image_size( 'related', 100, 100, true );
