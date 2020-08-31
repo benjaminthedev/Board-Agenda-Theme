@@ -45,7 +45,7 @@
   }
 
 
-    console.log('DedSec');
+    //console.log('DedSec');
 
 
     let clickMe = document.querySelector(".header-right a");
