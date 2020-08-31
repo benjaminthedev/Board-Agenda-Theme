@@ -1,5 +1,15 @@
 console.log('This is the books JS');
 
+
+
+// 
+//const bigRedbtn = document.querySelectorAll('a.bigRed');
+//const bookTitles = document.querySelectorAll('.wp-show-posts-entry-title');
+//bigRedbtn.forEach((n, i) => n.href = bookTitles[i].href);
+// 
+
+
+
 // Get the URL of the big red button
 const bigRedbtn = document.querySelectorAll('.bigRed');
 //Convert into an array
@@ -25,7 +35,8 @@ for (var i = 0; i < bigRedbtnArray.length; i++) {
 
         //So can you do something like this
 
-
+        //This is where I am stuck at
+        //I need to replace each bookTitlesArray[j].href with the value of bigRedbtnArray[i].href
 
     }
 }
