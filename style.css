@@ -7104,6 +7104,10 @@ li#mega-menu-item-execphp-3.dumb {
 
 /* Start CSS for New Book Reviews 2020 */
 
+.page-id-23663 h2.wp-show-posts-entry-title {
+    text-align: center;
+}
+
 .page-id-23663 article.wp-show-posts-single {
     border: 4px solid #738086;
     padding: 16px;

@@ -185,7 +185,7 @@ function zeen101_admin_custom_fields( $user ) {
   <table class="form-table">
 
 	 <tr>
-		<th><label>Company - HELLOE</label></th>
+		<th><label>Company</label></th>
 		<td>
 			<?php echo $company; ?>
 		</td>
@@ -319,6 +319,10 @@ function boardagenda_enqueue_scripts() {
 	if (is_page(9813)) {
 		wp_enqueue_script( 'userlogin', get_stylesheet_directory_uri() . '/js/registerScript.js', array(), '', true );
 	}	
+
+	if (is_page(23663)) {
+		wp_enqueue_script( 'booksJS', get_stylesheet_directory_uri() . '/js/booksJS.js', array(), '', true );
+	}
 
 
 	// Execute the action only if the user isn't logged in
