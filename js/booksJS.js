@@ -2,7 +2,7 @@
 const bigRedbtn = document.querySelectorAll('a.bigRed');
 const bookTitles = document.querySelectorAll('.wp-show-posts-entry-title a');
 // Replacing the href with bigRed's href
-bigRedbtn.forEach((n, i) => n.href = bookTitles[i].href);
+bookTitles.forEach((n, i) => n.href = bigRedbtn[i].href);
 
 //.forEach iterates through an iterable, in this case a NodeList, and streams 3 things: 
 //the current value, an integer representing the current index and the iterable itself. 
