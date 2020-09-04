@@ -7131,10 +7131,18 @@ li#mega-menu-item-execphp-3.dumb {
 
 /* -- */
 
-div#is-ajax-search-result-23712 {
+div#is-ajax-search-result-23712,
+div#is-ajax-search-result-23733 {
     width: 96vw !important;
-    /* margin-left: -66vw !important; */
     margin-left: -2vw !important;
+}
+
+
+/* -- New Search In The Header -- */
+
+.newTopSearch input.is-search-input{
+    border: 1px solid #000000 !important;
+    height: 29px !important;
 }
 
 /* -- */
