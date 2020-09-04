@@ -424,11 +424,17 @@ function board_agenda_header_wrap() { ?>
 					<li><a href="<?php echo is_user_logged_in() ? wp_logout_url( get_the_permalink() ) : '#' ?>" class="<?php echo is_user_logged_in() ? '' : 'log-me-in'?>"><i class="fa fa-lock icon-color"></i><?php echo is_user_logged_in() ? 'Log out' : 'Log In'; ?></a></li>
                     <!-- Header top search option -->
                     <li>
-                        <form id="demo-b" role="search" method="get" class="search-form1" action="<?php echo home_url( '/' ); ?>">
+                        <!-- <form id="demo-b" role="search" method="get" class="search-form1" action="<?php //echo home_url( '/' ); ?>">
                             <input type="searchform" class="search-field" placeholder="search" value="" name="s" title="Search for" />
 														<label for="search-submit" class="search-label"></label>
 														<input type="submit" name="search-submit" id="search-submit" class="hidden">
-                        </form>
+                        </form> -->
+
+						<div class="newTopSearch">
+							<?php echo do_shortcode('[ivory-search id="23712" title="Default Search Form"]'); ?>
+						</div>
+
+						
                     </li>
             </ul>
 			</div>

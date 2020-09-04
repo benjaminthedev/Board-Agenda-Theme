@@ -7129,8 +7129,15 @@ li#mega-menu-item-execphp-3.dumb {
 
 /* End CSS for New Book Reviews 2020 */
 
+/* -- */
 
+div#is-ajax-search-result-23712 {
+    width: 96vw !important;
+    /* margin-left: -66vw !important; */
+    margin-left: -2vw !important;
+}
 
+/* -- */
 
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {}
