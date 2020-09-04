@@ -7153,6 +7153,10 @@ div#is-ajax-search-result-23733 {
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 
+.newTopSearch {
+    display: none;
+}    
+
 	li.mangazine-top-menu.OddMenuItems {
     width: 44% !important;
     float: left!important;
@@ -7169,6 +7173,10 @@ li.mangazine-top-menu.EvenMenuItems {
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
+
+    .newTopSearch {
+        display: none;
+    }
 
 
 	li.mangazine-top-menu.OddMenuItems {
@@ -7187,6 +7195,10 @@ li.mangazine-top-menu.EvenMenuItems {
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
+
+     .newTopSearch {
+       display: none;
+    }
 
 	li.mangazine-top-menu:nth-child(1) {
     	width: 100% !important;
@@ -7222,7 +7234,11 @@ li.latest-stories-excerpt.oddpost.newClass .latest-stories-thumb, li.latest-stor
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
 
-        
+
+    .newTopSearch {
+        display: none;
+    }
+            
 
 		li.latest-stories-excerpt.oddpost.newClass img.attachment-latest-two-stories.size-latest-two-stories.wp-post-image,
 		li.latest-stories-excerpt.evenpost.newClass	img.attachment-latest-two-stories.size-latest-two-stories.wp-post-image{
