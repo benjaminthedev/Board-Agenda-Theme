@@ -311,33 +311,15 @@ function boardagenda_enqueue_scripts() {
   wp_enqueue_style( 'bx-slider-css', get_stylesheet_directory_uri() . "/css/jquery.bxslider.min.css");
 
 
-
-
-
 	//Not logged in and need to register script   
 	//User LogIn JS
 	if (is_page(9813)) {
 		wp_enqueue_script( 'userlogin', get_stylesheet_directory_uri() . '/js/registerScript.js', array(), '', true );
 	}	
 
-	if (is_page(23663)) {
-		wp_enqueue_script( 'booksJS', get_stylesheet_directory_uri() . '/js/booksJS.js', array(), '', true );
-	}
-
-
 	// Execute the action only if the user isn't logged in
 	board_agenda_ajax_login_init();
 }
-
-
-
-
-
-
-
-
-
-
 
 
 //adding thumbnail support
