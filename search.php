@@ -6,14 +6,14 @@
 get_header(); ?>
 
 <div class="wrap">
-
 	<section id="primary" class="wrap">
 		<main id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="front-title test"><?php printf( __( 'Search Results for: %s', 'board-agenda' ), get_search_query() ); ?></h1>
+				<h1 class="front-title test">
+				<?php printf( __( 'Search Results for: %s', 'board-agenda' ), get_search_query() ); ?></h1>
 			</header><!-- .page-header -->
 
 			<ol class="category-latest-continued">
@@ -70,15 +70,24 @@ get_header(); ?>
 
 
 				</li>
+
+				
 				<?php
 
-				//get_template_part( 'content', 'search' );
+
 
 			// End the loop.
 			endwhile;
 
-			echo '</ol>';
+			echo '</ol>';?>
 
+
+			<div class="nav-previous alignleft"><?php previous_posts_link( 'Older posts' ); ?></div>
+			<div class="nav-next alignright"><?php next_posts_link( 'Newer posts' ); ?></div>
+
+
+			<?php echo do_shortcode('[facetwp facet="categories"]'); ?>
+		<?php 
 		// If no content, include the "No posts found" template.
 		else :
 			echo '<h2>No result found!</h2>';
@@ -86,6 +95,11 @@ get_header(); ?>
 		?>
 
 		</main><!-- .site-main -->
+		<h1>facetwp</h1>
+
+
+
+
 	</section><!-- .content-area -->
 </div>
 

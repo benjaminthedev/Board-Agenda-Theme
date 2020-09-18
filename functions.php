@@ -411,7 +411,7 @@ function board_agenda_header_wrap() { ?>
 					</li>
                     <li>
 						<div class="newTopSearch">
-							<?php echo do_shortcode('[ivory-search id="23733" title="Top Bar Menu"]'); ?>
+							<?php //echo do_shortcode('[ivory-search id="23733" title="Top Bar Menu"]'); ?>
 						</div>						
                     </li>
             </ul>
@@ -1075,70 +1075,7 @@ function board_agenda_search_sidebar() {
 	}
 }
 
-/**
- * The following shortcode is used to display the archive categories
- */
-function board_angeda_search_filters() {
-	$type = isset( $_GET['type'] ) ? sanitize_title( $_GET['type'] ) : get_post_type();
-	//The taxonomy slug is 'registered' as singular...
-	if( substr( $type, -1 ) == 's' ) {
-		$type = substr( $type, 0, -1 );
-	}
 
-	$search = @$_GET['search'];
-	$checked = checked( isset( $_GET['all' ] ) || ! isset( $_GET['cat'] ), true, false );
-
-	$no_results = '';
-	if( ! have_posts() ) {
-		$no_results = '<div class="no-results">Sorry, no results found.</div>';
-	}
-$out = <<< FORM
-	<form role="s" method="get" id="resource-searchform" class="searchform" action="">
-		<input type="hidden" name="type" value="$type">
-		<div>
-			<input type="text" name="search" id="search" placeholder="Search..." value="$search">
-			<label for="searchsubmit" class="button fa fa-search"></label>
-			<input type="submit" id="searchsubmit" value="" class="hidden">
-			$no_results
-		</div>
-
-		<div class="sortby">
-			<h3 class="widget-title">CATEGORY:</h3>
-			<ul class="check-list">
-				<li>
-					<input type="checkbox" name="all" id="filter-{$term->term_id}" value="1" $checked />
-					<label for="filter-{$term->term_id}" class="checkbox"></label>
-					<label for="filter-{$term->term_id}">All</label>
-				</li>
-FORM;
-
-	$terms = get_terms( $type . '-categories' );
-	if( ! is_wp_error( $terms ) ) :
-
-		$filters = isset( $_GET[ 'c' ] ) ? $_GET['c'] : array();
-		if( ! is_array( $filters ) ) $filters = array( $filters );
-		foreach( $terms as $term ) :
-			$checked = checked( in_array( $term->term_id, $filters ) || empty( $filters ), true, false );
-$out .= <<<LI
-		<li>
-			<input type="checkbox" name="c[]" id="filter-{$term->term_id}" value="$term->term_id" $checked />
-			<label for="filter-{$term->term_id}" class="checkbox"></label>
-			<label for="filter-{$term->term_id}">$term->name</label>
-		</li>
-LI;
-		endforeach;
-	endif;
-
-$out .= <<< FORM
-		</ul>
-		<input type="submit" value="Filter" class="filter" />
-	</div>
-</form>
-FORM;
-
-	return $out;
-}
-add_shortcode( 'ba_search_form', 'board_angeda_search_filters' );
 
 /**
  * FEATURED PARTNER RESOURCES shortcode
