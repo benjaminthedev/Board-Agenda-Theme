@@ -1423,6 +1423,12 @@ function board_agenda_network_twitter_widget() {
 			'description' => 'Sidebar for register-subscribe page template.',
 			'class' => 'register-subscribe-sidebar'
 		) );
+
+		  genesis_register_sidebar( array(
+				'name' => 'Search Page SideBar',
+				'id' => 'search-side',
+				'description' => 'Search Page SideBar',
+		));
 }
 add_action( 'widgets_init', 'board_agenda_network_twitter_widget' );
 
