@@ -8,7 +8,7 @@ get_header(); ?>
 <div class="wrap">
 	<section id="primary" class="wrap">
 		<main id="main" class="site-main" role="main">
-
+<div class="facetwp-template">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -66,9 +66,6 @@ get_header(); ?>
 						<a href="<?php the_permalink() ?>" class="button read-more">Read More &nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 						</span>
 
-						
-
-
 				</li>
 
 				
@@ -93,10 +90,23 @@ get_header(); ?>
 			echo '<h2>No result found!</h2>';
 		endif;
 		?>
+		</div>
+
+
+			<h1>facetwp</h1>
+
+<?php dynamic_sidebar('search-side'); ?> 
+
 
 		</main><!-- .site-main -->
-		<h1>facetwp</h1>
+	
+<!-- Notes
 
+1, add a new sidebar
+2, add the shortcode for the filters
+nope it don't work.
+
+ -->
 
 
 
