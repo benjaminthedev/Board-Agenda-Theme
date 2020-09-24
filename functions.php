@@ -412,6 +412,11 @@ function board_agenda_header_wrap() { ?>
                     <li>
 						<div class="newTopSearch">
 							<?php //echo do_shortcode('[ivory-search id="23733" title="Top Bar Menu"]'); ?>
+
+							<!-- <form action="/test-search-page/"  method="get">
+								<input type="search" placeholder="Search &hellip;" value="" name="fwp_keywords">
+								<button type="submit">Search</button>
+							</form> -->
 						</div>						
                     </li>
             </ul>
@@ -2624,3 +2629,20 @@ add_filter('the_content_feed', 'featuredtoRSS');
 // add_filter('pre_site_transient_update_core','remove_core_updates');
 // add_filter('pre_site_transient_update_plugins','remove_core_updates');
 // add_filter('pre_site_transient_update_themes','remove_core_updates');
+
+
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    if ( 'edd_wish_list' == $query->get( 'post_type' ) ) {
+        $is_main_query = false;
+    }
+    return $is_main_query;
+}, 10, 2 );
+
+/** filters search form to replace the s input with your search facet - change fwp_keywords as needed
+ ** and replace the default action with the page url of your custom search results page - change /site-search/ as needed
+ ** may need adjusting if the search is already modified by another plugin or theme */
+add_filter( 'get_search_form', function( $form ) {
+	$form = str_replace( 'name="s"', 'name="?_search"', $form );
+	$form = preg_replace( '/action=".*"/', 'action="/test-search-page/"', $form );
+	return $form;
+} );

@@ -7145,6 +7145,58 @@ div#is-ajax-search-result-23733 {
     height: 29px !important;
 }
 
+
+/* New Search Page */
+
+input.facetwp-search {
+    width: 87%;
+}
+
+
+.fwpl-result {
+    min-height: 250px;
+}
+
+.featured__img{
+	height: 200px;  
+    float: left;
+    margin-right: 10px;
+  }
+
+.featured__img img {
+	border: 2px solid black;
+}
+
+.post__title {
+    font-size: 19px;
+    font-family: 'Avenir-Black';
+    line-height: 19px;
+    padding-top: 2px;
+    color: #2B2B2B;
+    display: inline-block;
+    margin-top: 21px;
+}
+
+.post__topic__selector,
+.post__date {
+    font-family: 'Avenir-Black';
+    color: #C95433;
+    font-size: 11px;
+    float:left;
+}
+
+.post__date {
+    margin-left: 10px;
+}
+
+.post__button {
+    margin-top: 15px;
+}
+
+
+
+
+
 /* -- */
 
 /* Smaller than standard 960 (devices and browsers) */
