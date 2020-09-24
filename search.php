@@ -79,38 +79,27 @@ get_header(); ?>
 			echo '</ol>';?>
 
 
-			<div class="nav-previous alignleft"><?php previous_posts_link( 'Older posts' ); ?></div>
-			<div class="nav-next alignright"><?php next_posts_link( 'Newer posts' ); ?></div>
+			<!-- <div class="nav-previous alignleft"><?php //previous_posts_link( 'Older posts' ); ?></div>
+			<div class="nav-next alignright"><?php //next_posts_link( 'Newer posts' ); ?></div> -->
 
 
-			<?php echo do_shortcode('[facetwp facet="categories"]'); ?>
+			
 		<?php 
 		// If no content, include the "No posts found" template.
 		else :
 			echo '<h2>No result found!</h2>';
 		endif;
 		?>
-		</div>
+				</div>
+			</main>
+		</section><!-- .content-area --	>
 
-
-			<h1>facetwp</h1>
-
-<?php dynamic_sidebar('search-side'); ?> 
-
-
-		</main><!-- .site-main -->
-	
-<!-- Notes
-
-1, add a new sidebar
-2, add the shortcode for the filters
-nope it don't work.
-
- -->
-
-
-
-	</section><!-- .content-area -->
+			<!-- <h1>This is where facetwp should sbe:</h1> -->
+			<!-- Custom SideBar -->
+			<?php echo do_shortcode('[facetwp facet="categories"]'); ?>
+			<?php echo do_shortcode('[facetwp facet="categories"]'); ?>
+			<?php echo do_shortcode('[facetwp facet="age"]'); ?>
+			<?php dynamic_sidebar('search-side'); ?>
 </div>
 
 <style>
@@ -134,8 +123,6 @@ nope it don't work.
 .latest-news-wrap{
 	margin-bottom: 50px;
 }
-
 </style>
-
 
 <?php get_footer(); ?>
