@@ -2643,3 +2643,14 @@ add_filter( 'get_search_form', function( $form ) {
 	$form = preg_replace( '/action=".*"/', 'action="/test-search-page/"', $form );
 	return $form;
 } );
+
+
+
+// Add to your (child) theme's functions.php
+
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    if ( false !== $query->get( 'showposts', false ) ) {
+        $is_main_query = false;
+    }
+    return $is_main_query;
+}, 10, 2 );
