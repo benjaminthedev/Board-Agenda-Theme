@@ -58,7 +58,11 @@ get_header(); ?>
 			  		</a>
 						<?php if( $is_resource ) echo '<span class="fa fa-cloud-download"></span>'; ?>
 					</div>
-					<p class="front-latest-date"><span class="topic-selector"><?php if( get_field('topic_selector') ) echo get_field('topic_selector') . ','; ?><?php echo $topic; ?></span>
+					<p class="front-latest-date">
+					<span class="topic-selector">
+					<?php if( get_field('topic_selector') ) echo get_field('topic_selector') . ','; ?>
+					<?php echo $topic; ?>
+					</span>
           <span><?php echo get_the_date('j F, Y'); ?></span></p>
 					<h3><a href="<?php the_permalink() ?>" class="new-link"><?php the_title(); ?></a></h3>
 						<span class="front-latest-excerpt front-latest-excerpt--search">

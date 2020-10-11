@@ -410,20 +410,17 @@ function board_agenda_header_wrap() { ?>
 						</a>
 					</li>
                     <li>
-						<div class="newTopSearch">
-							<?php //echo do_shortcode('[ivory-search id="23733" title="Top Bar Menu"]'); ?>
+						<div class="newTopSearch">						
 
-							<!-- <form action="/test-search-page/"  method="get">
-								<input type="search" placeholder="Search &hellip;" value="" name="fwp_keywords">
-								<button type="submit">Search</button>
-							</form> -->
+							<form method="get" action="/search-filter/">
+								<input type="text" name="_search" placeholder="Please Search" />
+							</form> 
 						</div>						
                     </li>
             </ul>
 			</div>
 		</div>
 	</div>
-
 <?php }
 
 //*****************************************************************************************************
@@ -2646,3 +2643,14 @@ add_filter( 'get_search_form', function( $form ) {
 	$form = preg_replace( '/action=".*"/', 'action="/test-search-page/"', $form );
 	return $form;
 } );
+
+
+
+// Add to your (child) theme's functions.php
+
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    if ( false !== $query->get( 'showposts', false ) ) {
+        $is_main_query = false;
+    }
+    return $is_main_query;
+}, 10, 2 );
