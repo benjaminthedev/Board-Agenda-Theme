@@ -26,25 +26,25 @@ function ba_add_admin_notification($action, $message, $user) {
  * Show all the notifications for the admins
  *
  */
-add_filter('admin_notices', 'ba_get_admin_notifications');
+// add_filter('admin_notices', 'ba_get_admin_notifications');
 
-function ba_get_admin_notifications() {
-	// Only for admins
-	if( ! current_user_can('manage_options') ) return;
+// function ba_get_admin_notifications() {
+// 	// Only for admins
+// 	if( ! current_user_can('manage_options') ) return;
 
-	$count = ba_get_notifications_count();
-	if( $count['total'] === 0 || @$_GET['post_type'] === 'notifications' ) return;
+// 	$count = ba_get_notifications_count();
+// 	if( $count['total'] === 0 || @$_GET['post_type'] === 'notifications' ) return;
 
-	echo '<div class="notice update-nag" style="display: block"><p>';
+// 	echo '<div class="notice update-nag" style="display: block"><p>';
 
-	$url = admin_url('/edit.php') . '?post_type=notifications';
-	if( @$count['draft'] > 0 ) {
-		printf( 'There are new pending activations. Click <a href="%s" class="button">Here</a>', $url );
-	} else {
-		printf( 'There are new approved partners. Click <a href="%s" class="button">Here</a>', $url );
-	}
-	echo '</p></div>';
-}
+// 	$url = admin_url('/edit.php') . '?post_type=notifications';
+// 	if( @$count['draft'] > 0 ) {
+// 		printf( 'There are new pending activations. Click <a href="%s" class="button">Here</a>', $url );
+// 	} else {
+// 		printf( 'There are new approved partners. Click <a href="%s" class="button">Here</a>', $url );
+// 	}
+// 	echo '</p></div>';
+// }
 
 /**
  * Customise the columns for the notifications table

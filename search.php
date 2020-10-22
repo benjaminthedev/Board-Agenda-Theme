@@ -6,14 +6,14 @@
 get_header(); ?>
 
 <div class="wrap">
-
 	<section id="primary" class="wrap">
 		<main id="main" class="site-main" role="main">
-
+<div class="facetwp-template">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="front-title test"><?php printf( __( 'Search Results for: %s', 'board-agenda' ), get_search_query() ); ?></h1>
+				<h1 class="front-title test">
+				<?php printf( __( 'Search Results for: %s', 'board-agenda' ), get_search_query() ); ?></h1>
 			</header><!-- .page-header -->
 
 			<ol class="category-latest-continued">
@@ -66,27 +66,40 @@ get_header(); ?>
 						<a href="<?php the_permalink() ?>" class="button read-more">Read More &nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 						</span>
 
-						
-
-
 				</li>
+
+				
 				<?php
 
-				//get_template_part( 'content', 'search' );
+
 
 			// End the loop.
 			endwhile;
 
-			echo '</ol>';
+			echo '</ol>';?>
 
+
+			<!-- <div class="nav-previous alignleft"><?php //previous_posts_link( 'Older posts' ); ?></div>
+			<div class="nav-next alignright"><?php //next_posts_link( 'Newer posts' ); ?></div> -->
+
+
+			
+		<?php 
 		// If no content, include the "No posts found" template.
 		else :
 			echo '<h2>No result found!</h2>';
 		endif;
 		?>
+				</div>
+			</main>
+		</section><!-- .content-area --	>
 
-		</main><!-- .site-main -->
-	</section><!-- .content-area -->
+			<!-- <h1>This is where facetwp should sbe:</h1> -->
+			<!-- Custom SideBar -->
+			<?php echo do_shortcode('[facetwp facet="categories"]'); ?>
+			<?php echo do_shortcode('[facetwp facet="categories"]'); ?>
+			<?php echo do_shortcode('[facetwp facet="age"]'); ?>
+			<?php dynamic_sidebar('search-side'); ?>
 </div>
 
 <style>
@@ -110,8 +123,6 @@ get_header(); ?>
 .latest-news-wrap{
 	margin-bottom: 50px;
 }
-
 </style>
-
 
 <?php get_footer(); ?>

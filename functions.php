@@ -311,33 +311,15 @@ function boardagenda_enqueue_scripts() {
   wp_enqueue_style( 'bx-slider-css', get_stylesheet_directory_uri() . "/css/jquery.bxslider.min.css");
 
 
-
-
-
 	//Not logged in and need to register script   
 	//User LogIn JS
 	if (is_page(9813)) {
 		wp_enqueue_script( 'userlogin', get_stylesheet_directory_uri() . '/js/registerScript.js', array(), '', true );
 	}	
 
-	if (is_page(23663)) {
-		wp_enqueue_script( 'booksJS', get_stylesheet_directory_uri() . '/js/booksJS.js', array(), '', true );
-	}
-
-
 	// Execute the action only if the user isn't logged in
 	board_agenda_ajax_login_init();
 }
-
-
-
-
-
-
-
-
-
-
 
 
 //adding thumbnail support
@@ -421,14 +403,21 @@ function board_agenda_header_wrap() { ?>
 							</a>
 						<?php endif; ?>
 					</li>
-					<li><a href="<?php echo is_user_logged_in() ? wp_logout_url( get_the_permalink() ) : '#' ?>" class="<?php echo is_user_logged_in() ? '' : 'log-me-in'?>"><i class="fa fa-lock icon-color"></i><?php echo is_user_logged_in() ? 'Log out' : 'Log In'; ?></a></li>
-                    <!-- Header top search option -->
+					<li>
+						<a href="<?php echo is_user_logged_in() ? wp_logout_url( get_the_permalink() ) : '#' ?>" class="<?php echo is_user_logged_in() ? '' : 'log-me-in'?>">
+							<i class="fa fa-lock icon-color"></i>
+							<?php echo is_user_logged_in() ? 'Log out' : 'Log In'; ?>
+						</a>
+					</li>
                     <li>
-                        <form id="demo-b" role="search" method="get" class="search-form1" action="<?php echo home_url( '/' ); ?>">
-                            <input type="searchform" class="search-field" placeholder="search" value="" name="s" title="Search for" />
-														<label for="search-submit" class="search-label"></label>
-														<input type="submit" name="search-submit" id="search-submit" class="hidden">
-                        </form>
+						<div class="newTopSearch">
+							<?php //echo do_shortcode('[ivory-search id="23733" title="Top Bar Menu"]'); ?>
+
+							<!-- <form action="/test-search-page/"  method="get">
+								<input type="search" placeholder="Search &hellip;" value="" name="fwp_keywords">
+								<button type="submit">Search</button>
+							</form> -->
+						</div>						
                     </li>
             </ul>
 			</div>
@@ -1091,70 +1080,7 @@ function board_agenda_search_sidebar() {
 	}
 }
 
-/**
- * The following shortcode is used to display the archive categories
- */
-function board_angeda_search_filters() {
-	$type = isset( $_GET['type'] ) ? sanitize_title( $_GET['type'] ) : get_post_type();
-	//The taxonomy slug is 'registered' as singular...
-	if( substr( $type, -1 ) == 's' ) {
-		$type = substr( $type, 0, -1 );
-	}
 
-	$search = @$_GET['search'];
-	$checked = checked( isset( $_GET['all' ] ) || ! isset( $_GET['cat'] ), true, false );
-
-	$no_results = '';
-	if( ! have_posts() ) {
-		$no_results = '<div class="no-results">Sorry, no results found.</div>';
-	}
-$out = <<< FORM
-	<form role="s" method="get" id="resource-searchform" class="searchform" action="">
-		<input type="hidden" name="type" value="$type">
-		<div>
-			<input type="text" name="search" id="search" placeholder="Search..." value="$search">
-			<label for="searchsubmit" class="button fa fa-search"></label>
-			<input type="submit" id="searchsubmit" value="" class="hidden">
-			$no_results
-		</div>
-
-		<div class="sortby">
-			<h3 class="widget-title">CATEGORY:</h3>
-			<ul class="check-list">
-				<li>
-					<input type="checkbox" name="all" id="filter-{$term->term_id}" value="1" $checked />
-					<label for="filter-{$term->term_id}" class="checkbox"></label>
-					<label for="filter-{$term->term_id}">All</label>
-				</li>
-FORM;
-
-	$terms = get_terms( $type . '-categories' );
-	if( ! is_wp_error( $terms ) ) :
-
-		$filters = isset( $_GET[ 'c' ] ) ? $_GET['c'] : array();
-		if( ! is_array( $filters ) ) $filters = array( $filters );
-		foreach( $terms as $term ) :
-			$checked = checked( in_array( $term->term_id, $filters ) || empty( $filters ), true, false );
-$out .= <<<LI
-		<li>
-			<input type="checkbox" name="c[]" id="filter-{$term->term_id}" value="$term->term_id" $checked />
-			<label for="filter-{$term->term_id}" class="checkbox"></label>
-			<label for="filter-{$term->term_id}">$term->name</label>
-		</li>
-LI;
-		endforeach;
-	endif;
-
-$out .= <<< FORM
-		</ul>
-		<input type="submit" value="Filter" class="filter" />
-	</div>
-</form>
-FORM;
-
-	return $out;
-}
-add_shortcode( 'ba_search_form', 'board_angeda_search_filters' );
 
 /**
  * FEATURED PARTNER RESOURCES shortcode
@@ -1502,6 +1428,12 @@ function board_agenda_network_twitter_widget() {
 			'description' => 'Sidebar for register-subscribe page template.',
 			'class' => 'register-subscribe-sidebar'
 		) );
+
+		  genesis_register_sidebar( array(
+				'name' => 'Search Page SideBar',
+				'id' => 'search-side',
+				'description' => 'Search Page SideBar',
+		));
 }
 add_action( 'widgets_init', 'board_agenda_network_twitter_widget' );
 
@@ -2697,3 +2629,32 @@ add_filter('the_content_feed', 'featuredtoRSS');
 // add_filter('pre_site_transient_update_core','remove_core_updates');
 // add_filter('pre_site_transient_update_plugins','remove_core_updates');
 // add_filter('pre_site_transient_update_themes','remove_core_updates');
+
+
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    if ( 'edd_wish_list' == $query->get( 'post_type' ) ) {
+        $is_main_query = false;
+    }
+    return $is_main_query;
+}, 10, 2 );
+
+/** filters search form to replace the s input with your search facet - change fwp_keywords as needed
+ ** and replace the default action with the page url of your custom search results page - change /site-search/ as needed
+ ** may need adjusting if the search is already modified by another plugin or theme */
+add_filter( 'get_search_form', function( $form ) {
+	$form = str_replace( 'name="s"', 'name="?_search"', $form );
+	$form = preg_replace( '/action=".*"/', 'action="/test-search-page/"', $form );
+	return $form;
+} );
+
+// Add to your (child) theme's functions.php
+
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    if ( false !== $query->get( 'showposts', false ) ) {
+        $is_main_query = false;
+    }
+    return $is_main_query;
+}, 10, 2 );
+
+
+add_filter( 'facetwp_use_search_relevancy', '__return_false' );
